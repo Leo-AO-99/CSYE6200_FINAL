@@ -1,0 +1,7 @@
+.vscode
+.idea
+.settings
+.DS_Store
+.classpath
+.project
+build.fxbuild
