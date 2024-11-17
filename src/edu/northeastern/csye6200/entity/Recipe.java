@@ -1,14 +1,20 @@
 package edu.northeastern.csye6200.entity;
 
 public class Recipe extends Base {
+	private static int serial_id = 1;
 	private String title;
 	private String image_url;
 	private String process;
-	
-	public Recipe() {
+
+	public Recipe(String title, String image_url, String process) {
+		this.id = serial_id++;
+		this.title = title;
+		this.image_url = image_url;
+		this.process = process;
 	}
 	
 	public Recipe(int id, String title, String image_url, String process) {
+		serial_id = Math.max(id + 1, serial_id);
 		this.id = id;
 		this.title = title;
 		this.image_url = image_url;
@@ -17,10 +23,6 @@ public class Recipe extends Base {
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getTitle() {
