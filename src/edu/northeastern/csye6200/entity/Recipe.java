@@ -5,20 +5,23 @@ public class Recipe extends Base {
 	private String title;
 	private String image_url;
 	private String process;
+	private String cooking_time;
 
-	public Recipe(String title, String image_url, String process) {
+	public Recipe(String title, String image_url, String process, String cooking_time) {
 		this.id = serial_id++;
 		this.title = title;
 		this.image_url = image_url;
 		this.process = process;
+		this.cooking_time = cooking_time;
 	}
 	
-	public Recipe(int id, String title, String image_url, String process) {
+	public Recipe(int id, String title, String image_url, String process, String cooking_time) {
 		serial_id = Math.max(id + 1, serial_id);
 		this.id = id;
 		this.title = title;
 		this.image_url = image_url;
 		this.process = process;
+		this.cooking_time = cooking_time;
 	}
 
 	public int getId() {
@@ -48,5 +51,12 @@ public class Recipe extends Base {
 	public void setProcess(String process) {
 		this.process = process;
 	}
-	
+
+	public String getCooking_time() {
+		return cooking_time;
+	}
+
+	public void setCooking_time(String cooking_time) {
+		this.cooking_time = cooking_time;
+	}
 }

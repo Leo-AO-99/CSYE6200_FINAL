@@ -29,14 +29,15 @@ public class DataManager {
             String line;
             // ignore the first line
             br.readLine();
-            while ((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null) {    
                 String[] parts = line.split(",");
-                if(parts.length < 4) continue;
+                if(parts.length < 5) continue;
                 int id = Integer.parseInt(parts[0]);
                 String title = parts[1];
                 String imageUrl = parts[2];
                 String instructions = parts[3];
-                recipes.put(id, new Recipe(id, title, imageUrl, instructions));
+                String cookingTime = parts[4];
+                recipes.put(id, new Recipe(id, title, imageUrl, instructions, cookingTime));
             }
         } catch (IOException e) {
             e.printStackTrace();
