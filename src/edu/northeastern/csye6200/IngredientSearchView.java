@@ -81,13 +81,10 @@ public class IngredientSearchView extends VBox {
             boolean isStrictMode = strictButton.isSelected();
             searchResults = searchRecipes(selectedIngredients, isStrictMode);
             
-            // 打印搜索模式
             System.out.println("Search Mode: " + (isStrictMode ? "Strict" : "Loose"));
             
-            // 打印选择的食材
             System.out.println("Selected Ingredients: " + String.join(", ", selectedIngredients));
             
-            // 打印搜索结果
             if (searchResults.isEmpty()) {
                 System.out.println("No recipes found with selected ingredients");
             } else {
@@ -97,7 +94,6 @@ public class IngredientSearchView extends VBox {
                 }
             }
             
-            // 调用 showSearchResults() 以显示搜索结果窗口
             showSearchResults();
         });
         
@@ -307,21 +303,18 @@ public class IngredientSearchView extends VBox {
         titleLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
         resultBox.getChildren().add(titleLabel);
 
-        // 遍历 Recipe 对象列表
         for (Recipe recipe : searchResults) {
             HBox recipeRow = new HBox(15);
             recipeRow.setPadding(new Insets(10));
             recipeRow.setStyle("-fx-background-color: #f5f5f5; -fx-background-radius: 5;");
 
-            // 使用 Recipe 对象中的 image_url 获取图片路径
             ImageView recipeImage = new ImageView();
-            String imagePath = recipe.getImage_url(); // 直接使用 image_url
+            String imagePath = recipe.getImage_url();
             System.out.println("Image path: " + imagePath);
             try {
                 Image image = new Image(new File(imagePath).toURI().toString());
                 recipeImage.setImage(image);
             } catch (Exception e) {
-                // 如果加载失败，使用默认图片
                 try {
                     Image defaultImage = new Image(new File("data/image/recipe/default.jpg").toURI().toString());
                     recipeImage.setImage(defaultImage);
@@ -333,17 +326,14 @@ public class IngredientSearchView extends VBox {
             recipeImage.setFitHeight(100);
             recipeImage.setPreserveRatio(true);
 
-            // 创建右侧信息区域
             VBox infoBox = new VBox(10);
             infoBox.setAlignment(Pos.CENTER_LEFT);
             HBox.setHgrow(infoBox, javafx.scene.layout.Priority.ALWAYS);
 
-            // 标题
             Label recipeTitleLabel = new Label(recipe.getTitle());
             recipeTitleLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
             recipeTitleLabel.setWrapText(true);
 
-            // 获取该食谱的所有食材
             List<String> recipeIngredients = new ArrayList<>();
             for (Ingredient ingredient : dataManager.getIngredients()) {
                 if (ingredient.getRecipe_id() == recipe.getId()) {
@@ -353,7 +343,6 @@ public class IngredientSearchView extends VBox {
                 }
             }
 
-            // 食材列表
             Label ingredientsLabel = new Label("Ingredients: " + String.join(", ", recipeIngredients));
             ingredientsLabel.setWrapText(true);
             ingredientsLabel.setStyle("-fx-font-size: 14px;");
@@ -361,13 +350,12 @@ public class IngredientSearchView extends VBox {
             infoBox.getChildren().addAll(recipeTitleLabel, ingredientsLabel);
             recipeRow.getChildren().addAll(recipeImage, infoBox);
 
-            // 添加点击事件
             recipeRow.setOnMouseClicked(e -> {
                 System.out.println("Clicked recipe: " + recipe.getTitle());
-                // 这里可以添加打开详细视图的逻辑
+                RecipeDetailView detailView = new RecipeDetailView();
+                detailView.showRecipe(recipe);
             });
 
-            // 添加鼠标悬停效果
             recipeRow.setOnMouseEntered(e -> 
                 recipeRow.setStyle("-fx-background-color: #e8e8e8; -fx-background-radius: 5; -fx-cursor: hand;"));
             recipeRow.setOnMouseExited(e -> 
