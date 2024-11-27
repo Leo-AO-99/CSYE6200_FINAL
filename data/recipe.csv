@@ -1,3 +1,3 @@
 id,title,image_url,instructions
-1,Chicken Alfredo,data/image/chicken_alfredo.jpg,Cook the chicken until it's done.
-2,Beef Stew,data/image/beef_stew.jpg,Cook the beef until it's done.
+1,Chicken Alfredo,data/image/recipe/chicken_alfredo.jpg,Cook the chicken until it's done.
+2,Beef Stew,data/image/recipe/beef_stew.jpg,Cook the beef until it's done.
