@@ -84,6 +84,16 @@ public class DataManager {
     public Recipe getRecipeById(int id) {
         return recipes.get(id);
     }
+    
+    public Recipe getRecipeByName(String name) {
+        for (Recipe recipe : recipes.values()) {
+            if (recipe.getTitle().equalsIgnoreCase(name)) {
+                return recipe;
+            }
+        }
+        return null;
+    }
+
 
     public List<Recipe> ingredientSearchStrict(List<String> ingredients) {
         List<Recipe> result = new ArrayList<>();
