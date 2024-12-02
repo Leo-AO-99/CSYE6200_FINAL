@@ -67,8 +67,9 @@ public class RecipeSearch extends Application {
         }
 
         // Fetch recipe data from DataManager
-        Recipe recipe = dataManager.getRecipeByName(recipeName);
-        if (recipe != null) {
+        List<Recipe> recipes = dataManager.getRecipeByName(recipeName);
+        if (!recipes.isEmpty()) {
+            Recipe recipe = recipes.get(0);
             // Create the result view
             VBox recipeBox = new VBox(10);
             recipeBox.setAlignment(Pos.CENTER_LEFT);
