@@ -27,7 +27,6 @@ public class DataManager {
         String filePath = dataPath + "recipe.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
-            // ignore the first line
             br.readLine();
             while ((line = br.readLine()) != null) {    
                 String[] parts = line.split(",");
@@ -48,7 +47,6 @@ public class DataManager {
         String filePath = dataPath + "ingredient.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
-            // ignore the first line
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -84,16 +82,27 @@ public class DataManager {
     public Recipe getRecipeById(int id) {
         return recipes.get(id);
     }
-    
-    public Recipe getRecipeByName(String name) {
+
+    public List<Recipe> getRecipeByName(String name) {
+        List<Recipe> matchedRecipes = new ArrayList<>();
+        if (name == null || name.trim().isEmpty()) {
+            return matchedRecipes;
+        }
+        
+        String searchTerm = name.toLowerCase().trim();
+        
         for (Recipe recipe : recipes.values()) {
-            if (recipe.getTitle().equalsIgnoreCase(name)) {
-                return recipe;
+            String recipeTitle = recipe.getTitle().toLowerCase();
+
+            if (recipeTitle.contains(searchTerm) ||
+                recipeTitle.equals(searchTerm) ||
+                recipeTitle.startsWith(searchTerm)) {
+                matchedRecipes.add(recipe);
             }
         }
-        return null;
+        
+        return matchedRecipes;
     }
-
 
     public List<Recipe> ingredientSearchStrict(List<String> ingredients) {
         List<Recipe> result = new ArrayList<>();

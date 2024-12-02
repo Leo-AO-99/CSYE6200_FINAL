@@ -20,6 +20,9 @@ public class Main extends Application {
             menuBar = createMenuBar();
             root.setTop(menuBar);
             
+            MainPageView mainPageView = new MainPageView();
+            root.setCenter(mainPageView);
+            
             Scene scene = new Scene(root, 1000, 800);
             primaryStage.setTitle("CSYE6200 - Recipe Management System");
             primaryStage.setScene(scene);
@@ -32,37 +35,32 @@ public class Main extends Application {
     
     private MenuBar createMenuBar() {
         MenuBar menuBar = new MenuBar();
-        
-        // 创建Search菜单及其子菜单项
+
         Menu searchMenu = new Menu("Search");
         MenuItem titleSearchItem = new MenuItem("Title Search");
         MenuItem ingredientSearchItem = new MenuItem("Ingredient Search");
         searchMenu.getItems().addAll(titleSearchItem, ingredientSearchItem);
-        
-        // 创建Import菜单
+
         Menu importMenu = new Menu("Import");
         MenuItem importMenuItem = new MenuItem("Import");
         importMenu.getItems().add(importMenuItem);
-        
-        // 添加事件处理
+
         titleSearchItem.setOnAction(e -> handleTitleSearch());
         ingredientSearchItem.setOnAction(e -> handleIngredientSearch());
         importMenuItem.setOnAction(e -> handleImport());
-        
-        // 将菜单添加到菜单栏
+
         menuBar.getMenus().addAll(searchMenu, importMenu);
         
         return menuBar;
     }
     
     private void handleTitleSearch() {
-        System.out.println("Title search clicked");
+        RecipSearchView searchView = new RecipSearchView();
+        root.setCenter(searchView);
     }
     
     private void handleIngredientSearch() {
-        // 创建配料搜索视图
         IngredientSearchView searchView = new IngredientSearchView();
-        // 将搜索视图设置到主界面的中心
         root.setCenter(searchView);
     }
     
