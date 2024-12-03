@@ -24,10 +24,6 @@ public class Recipe extends Base {
 		this.cooking_time = cooking_time;
 	}
 
-	public int getId() {
-		return id;
-	}
-
 	public String getTitle() {
 		return title;
 	}
