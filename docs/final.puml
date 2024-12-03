@@ -1,0 +1,59 @@
+@startuml
+
+abstract class Base {
+    - int id
+    + getId(): int
+    + setId(id: int): void
+}
+
+class Recipe {
+    - String title
+    - String image_url
+    - String process
+    - String cooking_time
+    + getTitle(): String
+    + setTitle(title: String): void
+    + getImage_url(): String
+    + setImage_url(image_url: String): void
+    + getProcess(): String
+    + setProcess(process: String): void
+    + getCooking_time(): String
+    + setCooking_time(cooking_time: String): void
+}
+
+class Ingredient {
+    - int recipe_id
+    - String ingredient_name
+    - String quantity
+    - String unit
+    + getRecipe_id(): int
+    + setRecipe_id(recipe_id: int): void
+    + getIngredient_name(): String
+    + setIngredient_name(ingredient_name: String): void
+    + getQuantity(): String
+    + setQuantity(quantity: String): void
+    + getUnit(): String
+    + setUnit(unit: String): void
+}
+
+class DataManager {
+    - String dataPath
+    - Map<Integer, Recipe> recipes
+    - Map<Integer, Ingredient> ingredients
+    + DataManager()
+    + List<Recipe> getRecipes()
+    + List<Ingredient> getIngredients()
+    + Set<String> getIngredientsName()
+    + Recipe getRecipeById(id: int)
+    + List<Recipe> getRecipeByName(name: String)
+    + List<Recipe> ingredientSearchStrict(ingredients: List<String>)
+    + List<Recipe> ingredientSearchLoose(ingredients: List<String>)
+    + void close()
+}
+
+Base <|-- Recipe
+Base <|-- Ingredient
+DataManager --> Recipe
+DataManager --> Ingredient
+
+@enduml

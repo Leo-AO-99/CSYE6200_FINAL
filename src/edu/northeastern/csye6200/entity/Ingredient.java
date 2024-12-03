@@ -24,14 +24,6 @@ public class Ingredient extends Base {
         this.unit = unit;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getRecipe_id() {
         return recipe_id;
     }
