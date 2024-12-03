@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.List;
 import java.util.Optional;
 
 public class RecipeSearch extends Application {
