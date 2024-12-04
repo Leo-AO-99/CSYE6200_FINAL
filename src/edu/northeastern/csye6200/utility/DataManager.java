@@ -88,9 +88,9 @@ public class DataManager {
         if (name == null || name.trim().isEmpty()) {
             return matchedRecipes;
         }
-        
+
         String searchTerm = name.toLowerCase().trim();
-        
+
         for (Recipe recipe : recipes.values()) {
             String recipeTitle = recipe.getTitle().toLowerCase();
 
@@ -100,56 +100,50 @@ public class DataManager {
                 matchedRecipes.add(recipe);
             }
         }
-        
+
         return matchedRecipes;
     }
 
     public List<Recipe> ingredientSearchStrict(List<String> ingredients) {
         List<Recipe> result = new ArrayList<>();
-        
-        // Iterate through all recipes
+
         for (Recipe recipe : recipes.values()) {
             boolean hasAllIngredients = true;
             List<String> recipeIngredients = new ArrayList<>();
-            
-            // Get all ingredients for current recipe
+
             for (Ingredient ingredient : this.ingredients.values()) {
                 if (ingredient.getRecipe_id() == recipe.getId()) {
                     recipeIngredients.add(ingredient.getIngredient_name().toLowerCase());
                 }
             }
-            
-            // Check if recipe contains all searched ingredients
+
             for (String searchIngredient : ingredients) {
                 if (!recipeIngredients.contains(searchIngredient.toLowerCase())) {
                     hasAllIngredients = false;
                     break;
                 }
             }
-            
+
             if (hasAllIngredients) {
                 result.add(recipe);
             }
         }
-        
+
         return result;
     }
 
     public List<Recipe> ingredientSearchLoose(List<String> ingredients) {
         List<Recipe> result = new ArrayList<>();
-        
-        // Iterate through all recipes
+
         for (Recipe recipe : recipes.values()) {
             List<String> recipeIngredients = new ArrayList<>();
-            
-            // Get all ingredients for current recipe
+
             for (Ingredient ingredient : this.ingredients.values()) {
                 if (ingredient.getRecipe_id() == recipe.getId()) {
                     recipeIngredients.add(ingredient.getIngredient_name().toLowerCase());
                 }
             }
-            
-            // Check if recipe contains any of the searched ingredients
+
             for (String searchIngredient : ingredients) {
                 if (recipeIngredients.contains(searchIngredient.toLowerCase())) {
                     result.add(recipe);
@@ -157,7 +151,7 @@ public class DataManager {
                 }
             }
         }
-        
+
         return result;
     }
 

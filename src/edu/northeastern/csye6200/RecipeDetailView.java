@@ -1,5 +1,6 @@
 package edu.northeastern.csye6200;
 
+import edu.northeastern.csye6200.entity.DMHandler;
 import edu.northeastern.csye6200.entity.Ingredient;
 import edu.northeastern.csye6200.entity.Recipe;
 import edu.northeastern.csye6200.utility.DataManager;
@@ -26,7 +27,6 @@ import java.util.List;
 public class RecipeDetailView {
     private Recipe recipe;
     private List<Ingredient> ingredients = new ArrayList<>();
-    private DataManager dataManager;
 
     @FXML
     private Label LabelRecipe;
@@ -61,9 +61,8 @@ public class RecipeDetailView {
     }
 
     public void setData(int recipeID) {
-        dataManager = new DataManager();
-        this.recipe = dataManager.getRecipeById(recipeID);
-        for (Ingredient i : dataManager.getIngredients()) {
+        this.recipe = DMHandler.dataManager.getRecipeById(recipeID);
+        for (Ingredient i : DMHandler.dataManager.getIngredients()) {
             if (i.getRecipe_id() == recipeID)
                 this.ingredients.add(i);
         }

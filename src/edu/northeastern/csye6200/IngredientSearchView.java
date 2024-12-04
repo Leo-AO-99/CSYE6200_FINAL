@@ -21,10 +21,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import edu.northeastern.csye6200.entity.Recipe;
+import edu.northeastern.csye6200.entity.DMHandler;
 import edu.northeastern.csye6200.entity.Ingredient;
 
 public class IngredientSearchView extends VBox {
-    private DataManager dataManager;
     private Random random = new Random();
     private Label selectedIngredientsLabel;
     private static final String IMAGE_PATH = "data/image/ingredient/";
@@ -39,7 +39,6 @@ public class IngredientSearchView extends VBox {
     private List<Recipe> searchResults = new ArrayList<>();
 
     public IngredientSearchView() {
-        dataManager = new DataManager();
         
         this.setSpacing(10);
         this.setPadding(new Insets(15));
@@ -125,7 +124,7 @@ public class IngredientSearchView extends VBox {
         ingredientsPane.setMinSize(PANE_WIDTH, PANE_HEIGHT);
         ingredientsPane.setPrefSize(PANE_WIDTH, PANE_HEIGHT);
         
-        Set<String> ingredients = dataManager.getIngredientsName();
+        Set<String> ingredients = DMHandler.dataManager.getIngredientsName();
         for (String ingredient : ingredients) {
             ToggleButton ingredientButton = createIngredientButton(ingredient);
             double[] position = findValidPosition(ingredientsPane);
@@ -335,7 +334,7 @@ public class IngredientSearchView extends VBox {
             recipeTitleLabel.setWrapText(true);
 
             List<String> recipeIngredients = new ArrayList<>();
-            for (Ingredient ingredient : dataManager.getIngredients()) {
+            for (Ingredient ingredient : DMHandler.dataManager.getIngredients()) {
                 if (ingredient.getRecipe_id() == recipe.getId()) {
                     recipeIngredients.add(ingredient.getIngredient_name() + 
                         " " + ingredient.getQuantity() + 
@@ -376,9 +375,9 @@ public class IngredientSearchView extends VBox {
 
     private List<Recipe> searchRecipes(List<String> ingredients, boolean isStrictMode) {
         if (isStrictMode) {
-            return dataManager.ingredientSearchStrict(ingredients);
+            return DMHandler.dataManager.ingredientSearchStrict(ingredients);
         } else {
-            return dataManager.ingredientSearchLoose(ingredients);
+            return DMHandler.dataManager.ingredientSearchLoose(ingredients);
         }
     }
 }

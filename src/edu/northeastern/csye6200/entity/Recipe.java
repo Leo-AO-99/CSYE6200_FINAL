@@ -11,7 +11,7 @@ public class Recipe extends Base {
 		this.id = serial_id++;
 		this.title = title;
 		this.image_url = image_url;
-		this.process = process;
+		this.process = process.replace("\\n", "\n");
 		this.cooking_time = cooking_time;
 	}
 	
@@ -20,7 +20,7 @@ public class Recipe extends Base {
 		this.id = id;
 		this.title = title;
 		this.image_url = image_url;
-		this.process = process;
+		this.process = process.replace("\\n", "\n");
 		this.cooking_time = cooking_time;
 	}
 
