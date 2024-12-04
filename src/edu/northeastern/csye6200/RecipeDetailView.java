@@ -41,7 +41,7 @@ public class RecipeDetailView {
     private ScrollPane PaneSteps;
     
     @FXML
-    private TextField TextTime;
+    private Label TextTime;
 
     public void showRecipe(Recipe recipe) {
         try {
@@ -103,7 +103,10 @@ public class RecipeDetailView {
         }
         
         VBox steps = new VBox(5);
-        steps.getChildren().add(new Label(recipe.getProcess()));
+        Label label=new Label(recipe.getProcess());
+        label.setWrapText(true);
+        label.setPrefWidth(280); 
+        steps.getChildren().add(label);
         PaneSteps.setContent(steps);
         
         TextTime.setText(recipe.getCooking_time());
