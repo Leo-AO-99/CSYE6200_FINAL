@@ -1,8 +1,8 @@
 package edu.northeastern.csye6200;
 
 import edu.northeastern.csye6200.entity.Recipe;
+import edu.northeastern.csye6200.entity.DMHandler;
 import edu.northeastern.csye6200.entity.Ingredient;
-import edu.northeastern.csye6200.utility.DataManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -16,12 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipSearchView extends VBox {
-    private DataManager dataManager;
     private static final String IMAGE_PATH = "";
     private Label resultLabel;
 
     public RecipSearchView() {
-        dataManager = new DataManager();
     
         setSpacing(10);
         setPadding(new Insets(15));
@@ -53,7 +51,7 @@ public class RecipSearchView extends VBox {
             return;
         }
 
-        List<Recipe> recipes = dataManager.getRecipeByName(recipeName);
+        List<Recipe> recipes = DMHandler.dataManager.getRecipeByName(recipeName);
         if (!recipes.isEmpty()) {
             // 创建结果显示区域
             VBox resultsBox = new VBox(15);
@@ -100,7 +98,7 @@ public class RecipSearchView extends VBox {
         recipeTitleLabel.setWrapText(true);
 
         List<String> recipeIngredients = new ArrayList<>();
-        for (Ingredient ingredient : dataManager.getIngredients()) {
+        for (Ingredient ingredient : DMHandler.dataManager.getIngredients()) {
             if (ingredient.getRecipe_id() == recipe.getId()) {
                 recipeIngredients.add(ingredient.getIngredient_name() + 
                     " " + ingredient.getQuantity() + 

@@ -1,7 +1,7 @@
 package edu.northeastern.csye6200;
 
+import edu.northeastern.csye6200.entity.DMHandler;
 import edu.northeastern.csye6200.entity.Recipe;
-import edu.northeastern.csye6200.utility.DataManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -19,17 +19,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainPageView extends VBox {
-    private DataManager dataManager;
     
     public MainPageView() {
         setSpacing(20);
         setPadding(new Insets(20));
         setAlignment(Pos.TOP_CENTER);
         setStyle("-fx-background-color: #f0f0f0;");
-        
-        dataManager = new DataManager();
-        
-        List<Recipe> allRecipes = dataManager.getRecipes();
+
+        List<Recipe> allRecipes = DMHandler.dataManager.getRecipes();
         System.out.println("Total recipes loaded: " + allRecipes.size());
         
         Label welcomeLabel = new Label("Welcome to Recipe Management System");
@@ -157,7 +154,7 @@ public class MainPageView extends VBox {
     }
     
     private List<Recipe> getRandomRecipes(int count) {
-        List<Recipe> allRecipes = dataManager.getRecipes();
+        List<Recipe> allRecipes = DMHandler.dataManager.getRecipes();
         if (allRecipes.isEmpty()) {
             System.out.println("No recipes loaded from DataManager");
             return new ArrayList<>();
