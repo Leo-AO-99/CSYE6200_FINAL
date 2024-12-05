@@ -3,3 +3,15 @@ id,recipe_id,ingredient_name,quantity,unit
 2,1,Alfredo Sauce,1,cup
 3,2,Beef,1,pound
 4,2,Carrots,2,cup
+5,3,Spaghetti,200,grams
+6,3,Minced Beef,150,grams
+7,4,Bread,2,slices
+8,4,Cheese,2,slices
+9,5,Broccoli,1,cup
+10,5,Bell Pepper,1,cup
+11,6,Tomato,3,whole
+12,6,Chicken Broth,2,cup
+13,7,Chicken,1,pound
+14,7,Curry Powder,2,tablespoon
+15,8,Beef,1,pound
+16,8,Tortilla,4,whole

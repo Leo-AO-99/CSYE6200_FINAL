@@ -1,3 +1,9 @@
 id,title,image_url,instructions,cooking_time
 1,Chicken Alfredo,data/image/recipe/chicken_alfredo.jpg,Cook the chicken until it's done,10 minutes
 2,Beef Stew,data/image/recipe/beef_stew.jpg,Cook the beef until it's done,20 minutes
+3,Spaghetti Bolognese,data/image/recipe/spaghetti_bolognese.jpg,Boil the spaghetti until al dente\nCook the minced beef until browned\nAdd tomato sauce and simmer,15 minutes
+4,Grilled Cheese Sandwich,data/image/recipe/grilled_cheese_sandwich.jpg,Butter the bread slices\nPlace cheese between slices\nGrill until golden brown,5 minutes
+5,Vegetable Stir Fry,data/image/recipe/vegetable_stir_fry.jpg,Chop the vegetables\nStir fry in a hot pan with oil\nAdd soy sauce and stir,10 minutes
+6,Tomato Soup,data/image/recipe/tomato_soup.jpg,Chop the tomatoes\nCook in a pot with broth\nBlend until smooth,20 minutes
+7,Chicken Curry,data/image/recipe/chicken_curry.jpg,Cook the chicken pieces\nAdd curry powder and coconut milk\nSimmer until thickened,25 minutes
+8,Beef Tacos,data/image/recipe/beef_tacos.jpg,Cook the beef with taco seasoning\nFill tortillas with beef and toppings\nServe with salsa,10 minutes
