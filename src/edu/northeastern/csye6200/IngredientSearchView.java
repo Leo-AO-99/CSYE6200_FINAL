@@ -1,6 +1,5 @@
 package edu.northeastern.csye6200;
 
-import edu.northeastern.csye6200.utility.DataManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
