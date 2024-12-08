@@ -78,8 +78,8 @@ public class Main extends Application {
     }
 
     private void handleImport() {
-        RecipeImport recipeImport = new RecipeImport();
-        root.setCenter(recipeImport);
+        // RecipeImport recipeImport = new RecipeImport();
+        // root.setCenter(recipeImport);
     }
 
     public static void main(String[] args) {
